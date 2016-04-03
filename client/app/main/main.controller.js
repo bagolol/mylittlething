@@ -32,5 +32,4 @@ class MainController {
 
 angular.module('telebuddiesApp')
   .controller('MainController', MainController);
-
 })();

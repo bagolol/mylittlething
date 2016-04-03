@@ -28,7 +28,7 @@ UserSchema
   .virtual('profile')
   .get(function() {
     return {
-      'name': this.name,
+      'name': this.username,
       'role': this.role
     };
   });

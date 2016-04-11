@@ -8,5 +8,10 @@ angular.module('telebuddiesApp')
         templateUrl: 'app/user/user.html',
         controller: 'UserController',
         controllerAs: 'vm'
-      });
-  });
+    }).state('edit', {
+        url: '/profile/edit',
+        templateUrl: 'app/user/profile/edit/edit.html',
+        controller: 'EditController',
+        controllerAs: 'vm'
+    });
+});

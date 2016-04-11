@@ -1,22 +1,24 @@
-<md-sidenav md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left"
-            class="md-whiteframe-z2 md-sidenav-left">
-  <md-toolbar md-theme="custom" class="md-hue-1 md-whiteframe-z2">
+<div class="container">
+  <div class="navbar-header">
+    <button class="navbar-toggle" type="button" ng-click="vm.isCollapsed = !vm.isCollapsed">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+  <div collapse="vm.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+    <ul class="nav navbar-nav">
+      <li ng-repeat="item in vm.menu" ui-sref-active="active">
+          <a ui-sref="{{item.state}}">{{item.title}}</a>
+      </li>
+    </ul>
 
-  </md-toolbar>
-      <md-button ng-repeat-start="item in vm.menuItems" layout="column" layout-align="center center"
-                 flex class="capitalize" ng-click="vm.selectItem(item)"
-                 ui-sref-active="md-warn" ui-sref="{{item.sref}}">
-          <div hide-sm hide-md class="md-tile-content">
-              <i class="material-icons md-36">{{item.name}}</i>
-          </div>
-          <div class="md-tile-content">
-              {{item.name}}
-          </div>
-      </md-button>
-      <md-divider ng-repeat-end></md-divider>
-      <md-button ng-click="vm.showActions($event)" layout-align="center center">
-          <div class="md-tile-content">
-            Actions
-          </div>
-      </md-button>
-</md-sidenav>
+    <ul class="nav navbar-nav navbar-center">
+      <li ng-hide="vm.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">sign up</a></li>
+      <li ng-hide="vm.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">login</a></li>
+      <li ng-show="vm.isLoggedIn()"><a ui-sref="profile">{{ vm.getCurrentUser().username }}</a></li>
+      <li ng-show="vm.isLoggedIn()"><a ui-sref="logout">logout</a></li>
+    </ul>
+  </div>
+</div>

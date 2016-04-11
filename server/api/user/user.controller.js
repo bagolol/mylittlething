@@ -76,6 +76,11 @@ export function destroy(req, res) {
     .catch(handleError(res));
 }
 
+export function edit (req, res, next) {
+  var userId = req.user._id;
+  console.log(userId);
+}
+
 /**
  * Change a users password
  */

@@ -52,7 +52,25 @@ User.find({}).removeAsync()
       name: 'Admin',
       email: 'admin@example.com',
       password: 'admin'
-    })
+    }, {
+      provider: 'local',
+      role: 'admin',
+      name: 'Rocco',
+      surname: 'Righi',
+      username: 'sprorigh',
+      email: 'roccorighi@hotmail.com',
+      password: 'Sprorigh78'
+    }, {
+      provider: 'local',
+      role: 'user',
+      name: 'Raimondo',
+      surname: 'Ventura',
+      username: 'raivent',
+      email: 'raimondoventura@hotmail.com',
+      password: 'Ventura'
+    }
+
+    )
     .then(() => {
       console.log('finished populating users');
     });

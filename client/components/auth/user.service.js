@@ -17,6 +17,10 @@ function UserResource($resource) {
       params: {
         id: 'me'
       }
+    },
+    update: {
+      method: 'PUT'
+      }
     }
   });
 }

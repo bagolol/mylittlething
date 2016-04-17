@@ -6,9 +6,12 @@ class EditController {
   submitted = false;
   user = {};
 
-  constructor($http, $scope, Auth) {
+  constructor($state, $scope, Auth, AlertService) {
     this.user = Auth.getCurrentUser();
     this.Auth = Auth;
+    this.AlertService = AlertService;
+    this.$state = $state;
+
   }
 
   updateProfile(form) {
@@ -16,15 +19,13 @@ class EditController {
     if (form.$valid) {
       this.Auth.editUser(this.user)
       .then(() => {
-        this.message = 'profile successfully updated';
-      })
+        this.AlertService.setSuccess({ show: true, msg: 'your profile has been updated successfully.' });
+        this.$state.go('profile');
 
-      // add catch to display errors
-      // .catch(() => {
-      //     form.password.$setValidity('mongoose', false);
-      //     this.errors.other = 'Incorrect password';
-      //     this.message = '';
-      //   });
+      })
+      .catch(() => {
+        this.AlertService.setError({ show: true, msg: 'your profile has NOT been updated successfully.' });
+        });
     }
   }
 }

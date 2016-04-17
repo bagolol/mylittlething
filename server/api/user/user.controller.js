@@ -76,9 +76,22 @@ export function destroy(req, res) {
     .catch(handleError(res));
 }
 
-export function edit (req, res, next) {
-  var userId = req.user._id;
-  console.log(userId);
+export function edit(req, res, next) {
+    var userId = req.user._id;
+    var address = (req.body.user.address);
+    User.findByIdAsync(userId)
+        .then(user => {
+            console.log(user);
+            user.address = address;
+            return user.saveAsync()
+              .then(() => {
+                res.status(204).end();
+              })
+              .catch(validationError(res));
+          // } else {
+          //   return res.status(403).end();
+          // }
+    });
 }
 
 /**
@@ -109,7 +122,6 @@ export function changePassword(req, res, next) {
  */
 export function me(req, res, next) {
   var userId = req.user._id;
-  console.log(userId);
 
   User.findOneAsync({ _id: userId }, '-salt -password')
     .then(user => { // don't ever give out the password or salt

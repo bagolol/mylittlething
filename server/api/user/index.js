@@ -13,7 +13,7 @@ router.delete('/:id', auth.isAuthenticated(), controller.destroy);
 router.get('/me', auth.isAuthenticated(), controller.me);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.isAuthenticated(), controller.show);
-router.put('/:id', auth.isAuthenticated(), controller.edit);
+router.put('/:id/update', auth.isAuthenticated(), controller.edit);
 router.post('/', controller.create);
 
 export default router;

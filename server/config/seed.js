@@ -68,9 +68,7 @@ User.find({}).removeAsync()
       username: 'raivent',
       email: 'raimondoventura@hotmail.com',
       password: 'Ventura'
-    }
-
-    )
+    })
     .then(() => {
       console.log('finished populating users');
     });

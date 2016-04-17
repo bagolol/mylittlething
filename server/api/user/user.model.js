@@ -10,6 +10,7 @@ var UserSchema = new Schema({
     type: String,
     lowercase: true
   },
+  address: String,
   name: String,
   surname: String,
   role: {

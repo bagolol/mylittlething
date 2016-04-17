@@ -22,64 +22,35 @@
         </div>
         <h3>Personal info</h3>
 
-        <form class="form-horizontal" role="form" name="form" ng-submit="vm.updateProfile(form)">
+        <form class="form-horizontal" ng-class="{ 'has-success': form.$valid && vm.submitted,'has-error': form.$invalid && vm.submitted }"role="form" name="form" ng-submit="vm.updateProfile(form)">
           <div class="form-group">
             <label class="col-lg-3 control-label">first name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="{{vm.currentUser.name}}">
+              <input class="form-control" ng-model="vm.user.name" type="text">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">last name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="{{vm.currentUser.surname}}">
+              <input class="form-control" ng-model="vm.user.surname"type="text">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">address:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="">
+              <input class="form-control" ng-model="vm.user.address" type="text">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">email:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="{{vm.currentUser.email}}">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">time zone:</label>
-            <div class="col-lg-8">
-              <div class="ui-select">
-                <select id="user_time_zone" class="form-control">
-                  <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                  <option value="Alaska">(GMT-09:00) Alaska</option>
-                  <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                  <option value="Arizona">(GMT-07:00) Arizona</option>
-                  <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                  <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                  <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                  <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                </select>
-              </div>
+              <input class="form-control" ng-model="vm.user.email" type="text">
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">username:</label>
             <div class="col-md-8">
-              <input class="form-control" type="text" value="{{vm.currentUser.username}}">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">password:</label>
-            <div class="col-md-8">
-              <input class="form-control" type="password" value="{{vm.currentUser.password}}">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">confirm password:</label>
-            <div class="col-md-8">
-              <input class="form-control" type="password" value="">
+              <input class="form-control" ng-model="vm.user.username"type="text">
             </div>
           </div>
           <div class="form-group">

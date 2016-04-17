@@ -15,10 +15,7 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-center">
-      <li ng-hide="vm.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">sign up</a></li>
-      <li ng-hide="vm.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">login</a></li>
       <li ng-show="vm.isLoggedIn()"><a ui-sref="profile">{{ vm.getCurrentUser().username }}</a></li>
-      <li ng-show="vm.isLoggedIn()"><a ui-sref="logout">logout</a></li>
     </ul>
   </div>
 </div>

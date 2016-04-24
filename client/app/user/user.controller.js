@@ -14,7 +14,6 @@ class UserController {
     }
     $http.get('/api/users/me').then(response => {
       this.currentUser = response.data;
-      // socket.syncUpdates('thing', this.awesomeThings);
     });
   }
 }

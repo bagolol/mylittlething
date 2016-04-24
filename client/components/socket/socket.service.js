@@ -27,7 +27,6 @@ angular.module('telebuddiesApp')
        */
       syncUpdates(modelName, array, cb) {
         cb = cb || angular.noop;
-
         /**
          * Syncs item creation/updates on 'model:save'
          */
@@ -35,7 +34,6 @@ angular.module('telebuddiesApp')
           var oldItem = _.find(array, {_id: item._id});
           var index = array.indexOf(oldItem);
           var event = 'created';
-
           // replace oldItem if it exists
           // otherwise just add item to the collection
           if (oldItem) {

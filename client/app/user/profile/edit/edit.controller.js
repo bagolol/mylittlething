@@ -6,11 +6,12 @@ class EditController {
   submitted = false;
   user = {};
 
-  constructor($state, $scope, Auth, AlertService) {
+  constructor($state, $scope, Auth, AlertService, socket) {
     this.user = Auth.getCurrentUser();
     this.Auth = Auth;
     this.AlertService = AlertService;
     this.$state = $state;
+    this.socket = socket;
 
   }
 

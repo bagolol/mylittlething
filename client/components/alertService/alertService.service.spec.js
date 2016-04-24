@@ -1,6 +1,6 @@
 'use strict';
 
-fdescribe('Service: AlertService', function () {
+describe('Service: AlertService', function () {
 
   // load the service's module
   beforeEach(module('telebuddiesApp'));

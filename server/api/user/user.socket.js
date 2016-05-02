@@ -10,7 +10,6 @@ var UserEvents = require('./user.events');
 var events = ['save', 'remove'];
 
 export function register(socket) {
-    console.log('user.socket.js');
   // Bind model events to socket events
   for (var i = 0, eventsLength = events.length; i < eventsLength; i++) {
     var event = events[i];

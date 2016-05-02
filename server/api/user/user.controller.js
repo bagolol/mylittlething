@@ -69,6 +69,7 @@ export function show(req, res, next) {
  * restriction: 'admin'
  */
 export function destroy(req, res) {
+    console.log(req.params.id);
   User.findByIdAndRemoveAsync(req.params.id)
     .then(function() {
       res.status(204).end();
@@ -81,7 +82,6 @@ export function edit(req, res, next) {
     var address = (req.body.user.address);
     User.findByIdAsync(userId)
         .then(user => {
-            console.log(user);
             user.address = address;
             return user.saveAsync()
               .then(() => {

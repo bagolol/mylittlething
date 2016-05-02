@@ -14,7 +14,6 @@ export function register(socket) {
   for (var i = 0, eventsLength = events.length; i < eventsLength; i++) {
     var event = events[i];
     var listener = createListener('user:' + event, socket);
-
     UserEvents.on(event, listener);
     socket.on('disconnect', removeListener(event, listener));
   }
@@ -23,7 +22,7 @@ export function register(socket) {
 
 function createListener(event, socket) {
   return function(doc) {
-    socket.emit(event, doc);
+    socket.emit(event, doc._id);
   };
 }
 

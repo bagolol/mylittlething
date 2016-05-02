@@ -50,9 +50,8 @@ angular.module('telebuddiesApp')
          * Syncs removed items on 'model:remove'
          */
         socket.on(modelName + ':remove', function (item) {
-            console.log(item);
           var event = 'deleted';
-          _.remove(array, {_id: item._id});
+          _.remove(array, {_id: item});
           cb(event, item, array);
         });
       },

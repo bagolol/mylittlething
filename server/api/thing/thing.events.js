@@ -7,7 +7,6 @@
 import {EventEmitter} from 'events';
 var Thing = require('./thing.model');
 var ThingEvents = new EventEmitter();
-
 // Set max event listeners (0 == unlimited)
 ThingEvents.setMaxListeners(0);
 

@@ -27,15 +27,15 @@ angular.module('telebuddiesApp')
        */
       syncUpdates(modelName, array, cb) {
         cb = cb || angular.noop;
-
         /**
          * Syncs item creation/updates on 'model:save'
          */
+
+         //at the moment I'm just passing the id, so if I was to save a new user I'd add the id only to the array of users/things. at the same time, I don't want to pass the entire object because it contains sensitive information
         socket.on(modelName + ':save', function (item) {
           var oldItem = _.find(array, {_id: item._id});
           var index = array.indexOf(oldItem);
           var event = 'created';
-
           // replace oldItem if it exists
           // otherwise just add item to the collection
           if (oldItem) {
@@ -53,7 +53,7 @@ angular.module('telebuddiesApp')
          */
         socket.on(modelName + ':remove', function (item) {
           var event = 'deleted';
-          _.remove(array, {_id: item._id});
+          _.remove(array, {_id: item});
           cb(event, item, array);
         });
       },

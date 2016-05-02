@@ -68,20 +68,42 @@ export function show(req, res, next) {
  * Deletes a user
  * restriction: 'admin'
  */
+function removeEntity(res) {
+  return function(entity) {
+    if (entity) {
+      return entity.removeAsync()
+        .then(() => {
+          res.status(204).end();
+        });
+    }
+  };
+}
+
+function handleEntityNotFound(res) {
+  return function(entity) {
+    if (!entity) {
+      res.status(404).end();
+      return null;
+    }
+    return entity;
+  };
+}
+
+
+
 export function destroy(req, res) {
-  User.findByIdAndRemoveAsync(req.params.id)
-    .then(function() {
-      res.status(204).end();
-    })
+  User.findByIdAsync(req.params.id)
+    .then(handleEntityNotFound(res))
+    .then(removeEntity(res))
     .catch(handleError(res));
 }
+
 
 export function edit(req, res, next) {
     var userId = req.user._id;
     var address = (req.body.user.address);
     User.findByIdAsync(userId)
         .then(user => {
-            console.log(user);
             user.address = address;
             return user.saveAsync()
               .then(() => {

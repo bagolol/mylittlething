@@ -3,18 +3,23 @@
 (function() {
 
 class AdminController {
-  constructor(User) {
-    // Use the User $resource to fetch all users
-    this.users = User.query();
-  }
 
-  delete(user) {
-    user.$remove();
-    this.users.splice(this.users.indexOf(user), 1);
-  }
+    constructor(User, $scope, socket, $http) {
+        this.$http = $http;
+        // Use the User $resource to fetch all users
+        this.users = User.query();
+        socket.syncUpdates('user', this.users);
+
+        $scope.$on('$destroy', function() {
+            socket.unsyncUpdates('user');
+        });
+    }
+    deleteUser(user) {
+        // Use the User $resource to delete user
+        user.$remove();
+    };
 }
 
 angular.module('telebuddiesApp.admin')
   .controller('AdminController', AdminController);
-
 })();

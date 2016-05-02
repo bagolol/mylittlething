@@ -1,12 +1,12 @@
 'use strict';
 
-describe('Directive: subnav', function () {
+describe('Directive: footer', function () {
 
   // load the directive's module and view
     beforeEach(module('telebuddiesApp'));
-    beforeEach(module('components/subnav/subnav.html'));
+    beforeEach(module('components/footer/footer.html'));
 
-    var element, scope,$httpBackend;
+    var element, scope, $httpBackend;
 
     beforeEach(inject(function ($rootScope, $injector) {
         $httpBackend = $injector.get('$httpBackend');
@@ -15,9 +15,10 @@ describe('Directive: subnav', function () {
     }));
 
     it('should make hidden element visible', inject(function ($compile) {
-        element = angular.element('<subnav></subnav>');
+        element = angular.element('<footer></footer>');
         element = $compile(element)(scope);
         scope.$apply();
-        expect(element.length).toBe(1);
+
+        expect(element.text().trim()).toBe('telebuddies 2016');
     }));
 });

@@ -1,21 +1,26 @@
 'use strict';
 
 class NavbarController {
-  //start-non-standard
-  menu = [{
-    'title': 'home',
-    'state': 'main'
-  }];
+    //start-non-standard
+    menu = [{
+        'title': 'home',
+        'state': 'main'
+    }];
 
-  isCollapsed = true;
-  //end-non-standard
+    isCollapsed = false;
+    //end-non-standard
 
-  constructor(Auth) {
-    this.isLoggedIn = Auth.isLoggedIn;
-    this.isAdmin = Auth.isAdmin;
-    this.getCurrentUser = Auth.getCurrentUser;
-  }
+    constructor(Auth) {
+        this.isLoggedIn = Auth.isLoggedIn;
+        this.isAdmin = Auth.isAdmin;
+        this.getCurrentUser = Auth.getCurrentUser;
+    }
+
+    toggle() {
+        if (this.isCollapsed) return this.isCollapsed = false
+        return this.isCollapsed = true;
+    }
 }
 
 angular.module('telebuddiesApp')
-  .controller('NavbarController', NavbarController);
+    .controller('NavbarController', NavbarController);
